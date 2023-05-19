@@ -3,6 +3,7 @@
 
 #include "./constants.h"
 
+int game_is_running = FALSE;
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 
@@ -38,8 +39,57 @@ int initialize_window(void)
     return TRUE;
 }
 
+void process_input()
+{
+    SDL_Event event;
+    SDL_PollEvent(&event);
+
+    switch (event.type)
+    {
+    case SDL_QUIT:
+        game_is_running = FALSE;
+        break;
+
+    case SDL_KEYDOWN:
+        if (event.key.keysym.sym == SDLK_ESCAPE)
+            game_is_running = FALSE;
+    }
+}
+
+void setup()
+{
+    // TODO:
+}
+void update()
+{
+    // TODO:
+}
+void render()
+{
+    // TODO:
+}
+
+void destroy_window()
+{
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+}
+
 int main()
 {
-    initialize_window();
+    game_is_running = initialize_window();
+
+    setup();
+
+    while (game_is_running)
+    {
+        process_input();
+        update();
+        render();
+    }
+
+    destroy_window();
+
     return 0;
 }
