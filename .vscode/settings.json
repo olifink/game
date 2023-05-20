@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/olifink/Code/try/c/sdl/game",
+            "binaryPath": "/home/olifink/Code/try/c/sdl/game/game",
+            "binaryArgs": []
+        }
+    ]
+}
